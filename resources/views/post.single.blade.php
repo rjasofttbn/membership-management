@@ -21,17 +21,10 @@
         </style>
     </head>
     <body class="antialiased">
-        <h2>Welcome to Laravel Membership Management Project</h2>
-<hr>
-@foreach ($posts as $post)
-<h2>{{$post->title}}</h2>
-<div>
-    {!! $post->description !!}
-</div>
-
-<a href="{{ route('posts.show', $post->id) }}">View More</a>
-
-@endforeach
+        <h2>{{$post->title}}</h2>
+        <div>
+            {!! $post->description !!}
+        </div>
 
     </body>
 </html>

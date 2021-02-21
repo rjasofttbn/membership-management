@@ -14,7 +14,26 @@ class PagesController extends Controller
      */
     public function index()
     {
-        //
+        $singlePost  = new stdClass();
+        $singlePost->id  = 1;
+        $singlePost->title  = "sample 1";
+        $singlePost->title  = 'Lorem ipsum, dolor sit amet consectetur 
+        adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
+        soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
+        Iusto, officia consequuntur.';
+        $singlePost->total_view  = 200;
+        array_push($POST, $singlePost);
+        $singlePost  = new stdClass();
+
+        $singlePost->id  = 2;
+        $singlePost->title  = "sample 2";
+        $singlePost->title  = 'Lorem ipsum, dolor sit amet consectetur 
+        adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
+        soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
+        Iusto, officia consequuntur.';
+        $singlePost->total_view  = 200;
+        array_push($POST, $singlePost);
+        return view('posts',compact('posts'));
     }
 
     /**
@@ -29,11 +48,32 @@ class PagesController extends Controller
 
     public function postsView()
     {
-        $user = new stdClass();
-        $user->name = "Faruk";
-        $user->age = 5;
-       return view('posts',compact('user'));
-            
+        $posts=[];
+    //     $user = new stdClass();
+    //     $user->name = "Faruk";
+    //     $user->age = 5;
+    //    return view('posts',compact('user'));
+    $singlePost  = new stdClass();
+    $singlePost->id  = 1;
+    $singlePost->title  = "sample 1";
+    $singlePost->description  = 'Lorem ipsum, dolor sit amet consectetur 
+    adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
+    soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
+    Iusto, officia consequuntur.';
+    $singlePost->total_view  = 200;
+    array_push($posts, $singlePost);
+
+
+    $singlePost  = new stdClass();
+    $singlePost->id  = 2;
+    $singlePost->title  = "sample 2";
+    $singlePost->description  = 'Lorem ipsum, dolor sit amet consectetur 
+    adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
+    soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
+    Iusto, officia consequuntur.';
+    $singlePost->total_view  = 200;
+    array_push($posts, $singlePost);
+    return view('posts', compact('posts'));     
        
     }
 
@@ -56,7 +96,16 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $Post  = new stdClass();
+        $Post->id  = $id;
+        $Post->title  = "sample 2";
+        $Post->description  = 'Lorem ipsum, dolor sit amet consectetur 
+        adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
+        soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
+        Iusto, officia consequuntur.';
+        $Post->total_view  = 200;
+       // array_push($post, $Post);
+        return view('post-single', compact('post'));  
     }
 
     /**

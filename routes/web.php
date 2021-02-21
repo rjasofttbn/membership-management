@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\welcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,5 +40,15 @@ Route::delete('/test-post-delete/{student_id}', function () {
 
 Route::get('/', [welcomeController::class, 'index'])->name('index');
 
-Route::get('posts', [PagesController::class, 'posts'])->name('posts');
-Route::get('/posts-view', [PagesController::class, 'postsView'])->name('posts');
+
+Route::get('/posts', [PagesController::class, 'posts'])->name('posts');
+// old
+
+Route::get('/posts-view', [PagesController::class, 'postsView'])->name('posts.view');
+Route::get('/posts-view-single/{id}', [PagesController::class, 'show'])->name('posts.show');
+
+
+//end
+
+
+//Route::get('/posts-view-single/{id}', [PostsController::class, 'show'])->name('posts.show');
