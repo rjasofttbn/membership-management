@@ -15,14 +15,27 @@
         </style>
 
         <style>
-            body {
-                font-family: 'Nunito';
-            }
+            .form{
+        padding: 5%;
+        border: 1px solid rgb(95, 30, 30);
+         }
         </style>
+       
     </head>
     <body class="antialiased">
         <h2>Welcome to Laravel Membership Management Project</h2>
 <hr>
+<form action="{{route('posts.store')}}" method="post" class="form">
+    @csrf
+
+    <label>Title </label><br/>
+    <input type="text" name="title" placeholder="Title"><br/>
+
+    <label>Descrption</label><br/>
+    <textarea name="description" placeholder="Description" cols="90" rows="5"></textarea><br/>
+
+    <button type="submit">Submit</button>
+</form>
 @foreach ($posts as $post)
 <h2>{{$post->title}}</h2>
 <div>

@@ -96,14 +96,14 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        $Post  = new stdClass();
-        $Post->id  = $id;
-        $Post->title  = "sample 2";
-        $Post->description  = 'Lorem ipsum, dolor sit amet consectetur 
+        $post  = new stdClass();
+        $post->id  = $id;
+        $post->title  = "sample 2";
+        $post->description  = 'Lorem ipsum, dolor sit amet consectetur 
         adipisicing elit. A, est? Aperiam delectus corrupti nesciunt, veritatis 
         soluta, officia rem sit quisquam ea quasi, sed perferendis vero itaque suscipit? 
         Iusto, officia consequuntur.';
-        $Post->total_view  = 200;
+        $post->total_view  = 200;
        // array_push($post, $Post);
         return view('post-single', compact('post'));  
     }
