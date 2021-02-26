@@ -1,4 +1,7 @@
-
-#wrapper{
+#wrapper {
     margin-top: 50px;
+}
+
+.form-custom-inline {
+    display: inline !important;
 }

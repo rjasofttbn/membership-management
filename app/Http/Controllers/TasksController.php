@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isNull;
+
 class TasksController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('id', 'desc')->get();
+        //$tasks = Task::orderBy('id', 'desc')->get();
+        $tasks = Task::orderBy('id', 'desc')->paginate(2);
         return view('tasks.index', compact('tasks'));
     }
 
@@ -65,6 +68,11 @@ class TasksController extends Controller
     public function edit($id)
     {
         //
+        $task = task::find($id);
+        if (is_Null($task)) {
+            return redirect()->route('tasks.home');
+        }
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -76,7 +84,15 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = task::find($id);
+        if (is_Null($task)) {
+            return redirect()->route('tasks.home');
+        }
+        $task->title = $request->title;
+        $task->details = $request->details;
+        $task->status = $request->status;
+        $task->save();
+        return redirect()->route('tasks.home');
     }
 
     /**
@@ -87,6 +103,16 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $task = task::find($id);
+        //var_dump($task);
+        //return;
+        //dd($task);
+        if (is_Null($task)) {
+            return redirect()->route('tasks.home');
+        }
+
+        $task->delete();
+        return redirect()->route('tasks.home');
     }
 }

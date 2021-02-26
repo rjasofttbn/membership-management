@@ -29,7 +29,7 @@
                                 <th scope="col">Detail</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="width: 150px">Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -38,27 +38,42 @@
                                 <th scope="row">{{$loop->index+1}}</th>
                                 <td>{{$task->title}}</td>
                                 <td>{{$task->details}}</td>
-                                <td>{{$task->created_at->diffForHumans()}}</td>  
                                 <td>
- @if ($task->status === "Open") 
- <span class="badge alert-success">{{$task->status}}</span>     
- @else
- <span class="badge alert-danger">{{$task->status}}</span> 
- @endif
-                                     
-                                 
-                                  
-                                </td>                                
-                                                              
+                                <span  class="badge badge-secondary">
+                                  {{$task->created_at->diffForHumans()}}
+                                </span>  
+                                </td>  
+                                <td>
+                                @if ($task->status === "Open") 
+                                <span class="badge alert-success">{{$task->status}}</span>     
+                                @else
+                                <span class="badge alert-danger">{{$task->status}}</span> 
+                                @endif 
+                                </td>                           
                                 <td>                                    
-                                    <a class="btn btn-outline-success" href="/">Edit</a>
-                                    <a class="btn btn-outline-danger"  href="/">Delete</a>                                    
+                                    <a class="btn btn-sm btn-outline-success" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
+                              
+                              
+                              
+                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="
+                                      post" class="form-custom-inline">
+                                    @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-sm  btn-outline-danger" type="submit">Delete</button>                                        
+                                </form>
+
+                              
+                                    
                                 </td>
                               </tr>                               
                               @endforeach
                               
                             </tbody>
-                          </table>                      
+                          </table> 
+                          <div class="d-flex justify-content-center">
+                            {{ $tasks->links() }}                     
+                          </div>
+                          
                     </div>
                   </div>   
                 </div> 
