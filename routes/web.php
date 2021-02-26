@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [TasksController::class,'index'])->name('tasks.index');
+Route::get('/', [TasksController::class,'index'])->name('tasks.home');
+Route::resource('tasks', TasksController::class);
