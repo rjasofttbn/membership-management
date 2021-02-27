@@ -14,12 +14,21 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home()
+    {
+        return view('frontend.pages.test');
+    }
+
+
+
     public function index()
     {
         //$tasks = Task::orderBy('id', 'desc')->get();
         $tasks = Task::orderBy('id', 'desc')->paginate(2);
         return view('tasks.index', compact('tasks'));
     }
+
 
     /**
      * Show the form for creating a new resource.
