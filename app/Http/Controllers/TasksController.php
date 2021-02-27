@@ -17,10 +17,19 @@ class TasksController extends Controller
 
     public function home()
     {
-        return view('frontend.pages.test');
+        return view('frontend.pages.index');
     }
 
 
+    public function about()
+    {
+        return view('frontend.pages.about');
+    }
+
+    public function contact()
+    {
+        return view('frontend.pages.contact');
+    }
 
     public function index()
     {
