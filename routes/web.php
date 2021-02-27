@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TasksController;
+use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+|Admin Routes
+|--------------------------------------------------------------------------
+|*/
 
-
-//Route::get('/', [TasksController::class,'index'])->name('tasks.home');
-Route::get('/', [TasksController::class, 'home'])->name('tasks.home');
-Route::get('/about', [TasksController::class, 'about'])->name('about');
-Route::get('/contact', [TasksController::class, 'contact'])->name('contact');
-Route::resource('tasks', TasksController::class);
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
+});
